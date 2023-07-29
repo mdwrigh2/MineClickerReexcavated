@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Mine Clicker Re-excavated</title>
+		<link rel="prefetch" href="oreicons" />
+		<link rel="icon" type="image/x-icon" href="toolIcons/2.png">
+		<link rel="stylesheet" href="98.css" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+		<div id="main">
+			<div id="sectionLevel">
+				<div id="XPBar"></div>
+				<p style="font-size: 4vh; position: relative; z-index: 1">Level <span id="level">1</span></p>
+			</div>
+			<div id="sectionMessages">
+				<p id="message">Test message</p>
+			</div>
+			<div id="sectionCash">
+				<p>You have <span id="cash">$0</span></p>
+			</div>
+			<div id="oreIcon" onclick="mineOre()"></div>
+			<p id="oreName">Sand</p>
+			<p id="oreInfo">Ore value: <span id="currentOreValue" style="color: #8f8">$1</span><br>Hit points: <span id="currentHitPoints" style="color: #8ff">10</span><br>Hardness: <span id="currentHardness" style="color: #fb8">0</span><br>Damage: <span id="currentDamage">0</span></p>
+			<div class="arrow" id="arrowLeft" onclick="previousOre()"></div>
+			<div class="arrow" id="arrowRight" onclick="nextOre()"></div>
+			<div class="arrow" id="arrowSkipLeft" onclick="firstOre()"></div>
+			<div class="arrow" id="arrowSkipRight" onclick="lastOre()"></div>
+			<div class="bottomButtons">
+				<div class="bottomButton" style="background-image: url('mostWidthButton.png'); width: 84%;" onclick="openToolScreen()">Tool</div>
+				<div id="toolIcon"></div>
+				<div class="bottomButton" onclick="openUpgradeScreen()">Upgrades</div>
+				<div class="bottomButton" onclick="openStatsScreen()">Stats &amp; Info</div>
+			</div>
+			
+			<div id="toolScreen">
+				<p style="color: #333; white-space: nowrap">You have a<br><span id="currentTool" style="font-size: 8vh">Shovel</span></p>
+				<div id="toolIconLarge"></div>
+				<div id="toolUpgradeButton" onclick="upgradeTool()">Upgrade to a <span id="nextTool">Pickaxe</span><br><span id="nextDamage">Damage: 1 -> 3</span><br>Costs <span id="nextToolCost">$10</span></div>
+				<p id="toolScreenCashText">You have <span id="toolScreenCash">$0</span></p>
+				<div class="bottomButtons">
+					<div class="bottomButton" id="ascensionBottomButton" style="color: #777" onclick="openAscensionScreen()">Unlocks at level 100!</div>
+					<div class="bottomButton" id="artifactBottomButton" style="color: #777" onclick="openArtifactScreen()">Unlocks at level 10!</div>
+					<div class="bottomButton" onclick="closeToolScreen()">Back</div>
+				</div>
+			</div>
+			
+			<div id="artifactScreen">
+				<p style="color: #ff8">You have <span id="artifacts">0</span> artifacts</p>
+				<p style="font-size: 2vh">Artifacts have a 100% drop chance when breaking an ore for the first time, or a <span id="artifactChance">5</span>% chance when breaking any other ore. Using them has a chance of improving your tool. Upgrading your tool will reset the boost.</p><br>
+				<p>Current boost: <span id="artifactBoost">0</span>%</p>
+				<div class="bottomButton" style="background-image: url('mostWidthButton.png'); width: 84%; margin-left: 8%" onclick="useArtifact()">Use artifact</div>
+				<p style="font-size: 3vh">Your artifact boost is currently capped at <span id="artifactBoostCap">150</span>%</p>
+				<p id="lastBoost" style="font-size: 3vh"></p>
+				<div class="bottomButtons">
+					<div class="bottomButton" onclick="closeArtifactScreen()">Back</div>
+				</div>
+			</div>
+			
+			<div id="ascensionScreen">
+				<p style="color: #b8f">You have <span id="ascensionPoints">0</span> ascension points (AP)</p>
+				<div id="ascendButton" onclick="confirmAscension()">Ascend and gain<br><b><span id="ascensionPointsToGet">0</span> AP</b><br>Next at <span id="nextAscensionPoint">$0</span></div>
+				<p id="ascensionScreenCashText">You have <span id="ascensionScreenCash">$0</span><br>Ascension will reset your tool and upgrades in exchange for AP. Each AP gives a 1% boost to damage.</p>
+				<div class="bottomButtons">
+					<div class="bottomButton" onclick="closeAscensionScreen()">Back</div>
+				</div>
+			</div>
+			
+			<div id="ascensionConfirmation">
+				<p style="color: #ddd">Are you sure you want to ascend?</p>
+				<center>
+					<button onclick="ascend()">Yes</button>
+					<button onclick="cancelAscension()">No</button>
+				</center><br>
+			</div>
+			
+			<div id="gameFinishScreen">
+				<p style="color: #ffb">Congrats! You have transcended and beaten the game!</p>
+				<p style="font-size: 2vh">However, you can continue playing if you like. Higher levels of transcendence await you...</p>
+				<center>
+					<button onclick="document.getElementById('gameFinishScreen').style.display = 'none'">Okay</button>
+				</center><br>
+			</div>
+			
+			<div id="upgradeScreen">
+				<p id="upgradeScreenCashText" style="color: #333; margin-left: 0; margin-right: 0">You have <span id="upgradeScreenCash">$0</span></p>
+				<!--Increase damage, increase artifact drop chance, increase artifact effect, increase XP gain?-->
+				<div class="upgrade" style="top: 17%; left: 28%; background-image: url('upgradeIcon1.png')" onclick="displayUpgrade(1)"></div>
+				<div class="upgrade" style="top: 17%; left: 72%; background-image: url('upgradeIcon2.png')" onclick="displayUpgrade(2)"></div>
+				<div class="upgrade" style="top: 38.5%; left: 28%; background-image: url('upgradeIcon3.png')" onclick="displayUpgrade(3)"></div>
+				<div class="upgrade" style="top: 38.5%; left: 72%; background-image: url('upgradeIcon4.png')" onclick="displayUpgrade(4)"></div>
+				<div class="upgrade" style="top: 60%; left: 28%; background-image: url('upgradeIcon5.png')" onclick="displayUpgrade(5)"></div>
+				<div class="upgrade" style="top: 60%; left: 72%; background-image: url('upgradeIcon6.png')" onclick="displayUpgrade(6)"></div>
+				<div id="upgradeButton" onclick="buyUpgrade()"><br>Tap an upgrade for info</div>
+				<div class="bottomButtons">
+					<div class="bottomButton" onclick="closeUpgradeScreen()">Back</div>
+				</div>
+			</div>
+			
+			<div id="statsScreen">
+				<p style="font-size: 8vh">Stats &amp; Info</p>
+				<p style="text-align: left">Time played: <span id="timePlayed">0</span><br>Total ores mined: <span id="totalOresMined">0</span></p><br>
+				<button onclick="changeNumberFormat()">Large number formatting: <span id="numberFormat">Standard</span></button><br>
+				<button onclick="enableDisableMessages()">Top bar messages: <span id="topBarMessages">On</span></button><br>
+				<button onclick="exportGame()">Export game</button><br>
+				<button onclick="importGame()">Import game</button><br>
+				<button style="color: #822" onclick="hardReset()">Hard reset</button>
+				<div class="bottomButtons">
+				<p style="font-size: 3vh; color: #777">Mine Clicker Re-excavated v1.3.0<br>Original Mine Clicker by Tolan (2014)<br>Ore icons generated using Midjourney</p>
+					<div class="bottomButton" onclick="closeStatsScreen()">Back</div>
+				</div>
+			</div>
+		</div>
+		<script src="constants.js"></script>
+		<script src="script.js"></script>
+  </body>
+</html>

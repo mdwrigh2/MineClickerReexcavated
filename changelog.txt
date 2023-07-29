@@ -1,0 +1,28 @@
+v1.3.0
+-The end of the content!
+-Added two new upgrades
+-Ores up to transcendence (79) and beyond
+-Added an option to disable the top bar messages
+-Other minor fixes and changes
+
+v1.2.0 (17/07/23)
+-Added ascension and ascension points
+-Ores up to nebula (55)
+-Improved number formatting
+-Fixed some font size issues
+-Other minor fixes and changes
+
+v1.1.0 (14/07/23)
+-Added a new upgrade
+-Ores up to preon matter (39)
+-Made autosave automatically enable on demonin.com
+
+v1.0.1 (13/07/23)
+-Balanced the game to be slightly slower
+-Added import, export and hard reset buttons
+-Added text to the artifact screen to tell you the artifact boost cap
+
+v1.0.0 (13/07/23)
+-Created the game lol
+-Ores up to diamond (25)
+-Tools, upgrades, artifacts

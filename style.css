@@ -1,0 +1,402 @@
+@font-face{
+    font-family:"Pixelated MS Sans Serif";
+    font-style:normal;
+    font-weight:400;
+    src:url(fonts/ms_sans_serif.woff) format("woff");
+    src:url(fonts/ms_sans_serif.woff2) format("woff2")
+}
+@font-face{
+    font-family:"Pixelated MS Sans Serif";
+    font-style:normal;
+    font-weight:700;
+    src:url(fonts/ms_sans_serif_bold.woff) format("woff");
+    src:url(fonts/ms_sans_serif_bold.woff2) format("woff2")
+}
+
+body {
+	font-family: "Pixelated MS Sans Serif", Arial;
+	background-color: #111;
+	image-rendering: pixelated;
+	touch-action: manipulate;
+	-webkit-tap-highlight-color: transparent; /*Hopefully removes the blue box over the images when you tap them*/
+}
+
+p {
+	font-family: "Pixelated MS Sans Serif", Arial;
+	color: white;
+	text-align: center;
+	font-size: 4vh;
+	margin: 1vh;
+	user-select: none;
+}
+
+div {
+	-webkit-tap-highlight-color: transparent; /*Hopefully removes the blue box over the images when you tap them*/
+}
+
+img {
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+button {
+	margin-left: 1vh;
+	font-size: 2.5vh;
+	height: 4vh;
+	color: #444;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+#main {
+	font-size: 4vh;
+	position: absolute;
+	top: 50vh;
+	left: 50vw;
+	transform: translate(-50%, -50%);
+	background-color: #444;
+	background-image: url('texture1.png');
+	background-size: 100%;
+	overflow: hidden;
+}
+
+#sectionLevel {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: #222;
+}
+
+#XPBar {
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 0;
+	background-image: linear-gradient(to top, #088, #0dd);
+	transition: width 400ms ease-out;
+}
+
+#sectionMessages {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: rgba(0,0,0,0.5);
+	z-index: 3;
+}
+
+#message {
+	font-size: 4vh;
+	text-shadow:0.2vh 0.2vh 0 #000, 0.2vh -0.2vh 0 #000, -0.2vh  0.2vh 0 #000, -0.2vh  -0.2vh 0 #000;
+}
+
+#sectionCash {
+	position: absolute;
+	top: 6vh;
+	left: 0;
+	width: 100%;
+	text-shadow:0.2vh 0.2vh 0 #000, 0.2vh -0.2vh 0 #000, -0.2vh  0.2vh 0 #000, -0.2vh  -0.2vh 0 #000;
+}
+
+#oreIcon {
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 28vh;
+	height: 28vh;
+	background-image: url('oreIcons/1.png');
+	background-size: 100% 100%;
+	filter: drop-shadow(0 0 1vh #222);
+}
+
+#oreIcon:hover, .arrow:hover {
+	cursor: pointer;
+}
+
+#oreIcon:active, .arrow:active{
+	transform: translate(-50%, -50%) scale(0.95);
+}
+
+.arrow {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	width: 8vh;
+	height: 8vh;
+	background-size: 100% 100%;
+}
+
+#arrowLeft {
+	top: 25%;
+	left: 10%;
+	background-image: url('arrowLeft.png');
+}
+
+#arrowRight {
+	top: 25%;
+	left: 90%;
+	background-image: url('arrowRight.png');
+}
+
+#arrowSkipLeft {
+	top: 35%;
+	left: 10%;
+	background-image: url('arrowSkipLeft.png');
+}
+
+#arrowSkipRight {
+	top: 35%;
+	left: 90%;
+	background-image: url('arrowSkipRight.png');
+}
+
+#oreName {
+	text-shadow:0.2vh 0.2vh 0 #000, 0.2vh -0.2vh 0 #000, -0.2vh  0.2vh 0 #000, -0.2vh  -0.2vh 0 #000;
+	position: absolute;
+	top: 45%;
+	left: 0;
+	width: 100%;
+	font-size: 7vh;
+	line-height: 7vh;
+	margin: 0;
+	color: #ffb;
+	white-space: nowrap;
+}
+
+#oreInfo {
+	text-shadow:0.2vh 0.2vh 0 #000, 0.2vh -0.2vh 0 #000, -0.2vh  0.2vh 0 #000, -0.2vh  -0.2vh 0 #000;
+	position: absolute;
+	top: 53%;
+	left: 0;
+	width: 100%;
+	margin: 0;
+	font-size: 4vh;
+}
+
+.bottomButtons {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+.bottomButton {
+	background-image: url('fullWidthButton.png');
+	margin: 0;
+	width: 100%;
+	background-size: 100% 100%;
+	text-align: center;
+	color: #444;
+	font-size: 5vh;
+	user-select: none;
+}
+
+.bottomButton:hover {
+	cursor: pointer;
+}
+
+#toolIcon {
+	position: absolute;
+	right: 0;
+	background-color: rgba(0,0,0,0.7);
+	background-image: url('toolIcons/1.png');
+	background-size: 100% 100%;
+}
+
+#toolScreen {
+	position: absolute;
+	top: 0;
+	left: 100%;
+	width: 100%;
+	height: 100%;
+	background-color: #888;
+	transition: left 400ms ease-out;
+	z-index: 2;
+}
+
+#toolIconLarge {
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 22vh;
+	height: 22vh;
+	background-image: url('toolIcons/1.png');
+	background-size: 100% 100%;
+	filter: drop-shadow(0 0 1vh #222);
+}
+
+#toolUpgradeButton {
+	position: absolute;
+	top: 53%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-image: url('largeButton.png');
+	margin: 0;
+	width: 84%;
+	background-size: 100% 100%;
+	text-align: center;
+	color: #444;
+	font-size: 5vh;
+	user-select: none;
+	font-size: 3.5vh;
+	padding-top: 1.5vh;
+	white-space: nowrap;
+}
+
+#toolUpgradeButton:hover {
+	cursor: pointer;
+}
+
+#toolScreenCashText {
+	color: #333;
+	position: absolute;
+	top: 65%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	white-space: nowrap;
+	margin: 0;
+}
+
+#artifactScreen {
+	position: absolute;
+	top: 0;
+	left: 100%;
+	width: 100%;
+	height: 100%;
+	background-color: #555;
+	transition: left 400ms ease-out;
+	z-index: 2;
+}
+
+#ascensionScreen {
+	position: absolute;
+	top: 0;
+	left: 100%;
+	width: 100%;
+	height: 100%;
+	background-color: #222;
+	transition: left 400ms ease-out;
+	z-index: 2;
+}
+
+#ascendButton {
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-image: url('largeButton.png');
+	margin: 0;
+	width: 84%;
+	background-size: 100% 100%;
+	text-align: center;
+	color: #444;
+	font-size: 5vh;
+	user-select: none;
+	font-size: 3.5vh;
+	padding-top: 1.5vh;
+}
+
+#ascendButton:hover {
+	cursor: pointer;
+}
+
+#ascensionScreenCashText {
+	font-size: 3vh;
+	color: #bbb;
+	position: absolute;
+	top: 35%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	margin: 0;
+}
+
+#ascensionConfirmation {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 80%;
+	transform: translate(-50%, -50%);
+	background-color: #666;
+	border: 0.5vh outset #777;
+	text-align: center;
+	z-index: 3;
+	display: none;
+}
+
+#upgradeScreen {
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background-color: #888;
+	transition: left 400ms ease-out;
+	z-index: 2;
+}
+
+.upgrade {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	width: 19vh;
+	height: 19vh;
+	background-size: 100% 100%;
+}
+
+.upgrade:hover {
+	cursor: pointer;
+}
+
+#upgradeButton {
+	position: absolute;
+	top: 79%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-image: url('largeButton.png');
+	margin: 0;
+	width: 84%;
+	background-size: 100% 100%;
+	text-align: center;
+	color: #444;
+	font-size: 5vh;
+	user-select: none;
+	font-size: 3.5vh;
+	padding-top: 1.2vh;
+	white-space: nowrap;
+}
+
+#upgradeButton:hover {
+	cursor: pointer;
+}
+
+#statsScreen {
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background-color: #333;
+	background-image: url('back.png');
+	background-size: 16vh;
+	transition: left 400ms ease-out;
+	z-index: 2;
+}
+
+#gameFinishScreen {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 80%;
+	transform: translate(-50%, -50%);
+	background-color: #aaa;
+	border: 0.5vh outset #bbb;
+	text-align: center;
+	z-index: 3;
+	display: none;
+}
